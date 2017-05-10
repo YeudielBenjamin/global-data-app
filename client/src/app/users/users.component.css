@@ -1,0 +1,19 @@
+.list-group-item{
+	padding-bottom: 3%;
+}
+
+.btn{
+	border-radius: 50%;
+	color: black;
+	background-color: transparent;
+	margin-top: -1%;
+
+}
+.delete:hover{
+	color: #FA5858;
+}
+
+
+.edit:hover{
+	color: #5882FA;
+}

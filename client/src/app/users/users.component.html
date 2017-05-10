@@ -1,0 +1,25 @@
+<h1>
+  Listado de usuarios 
+</h1>
+
+<div class="container well ">
+  <div class="panel panel-primary">
+    <div class=" panel-heading">Usuarios</div>
+    <div class=" list-group" *ngFor='let item of users'>
+      <a href="" class="list-group-item">
+        <p class="col-sm-5
+        glyphicon glyphicon-user">  
+        {{item.name}}     {{item.lastname}}  
+        </p>
+        <p class="col-sm-3 glyphicon glyphicon-envelope">
+          {{item.email}} 
+        </p>
+        <p class="col-sm-2 glyphicon glyphicon-earphone">
+        {{item.phone}}
+        </p>
+        <button class="btn delete col-sm-1 glyphicon glyphicon-remove"> </button>
+        <button class="btn edit col-sm-1 glyphicon glyphicon-pencil"> </button>
+      </a>
+    </div>
+  </div>
+</div>
