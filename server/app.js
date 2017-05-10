@@ -5,9 +5,6 @@ var bodyParser  = require("body-parser");
 
 var app = express();
 
-// Rutas van aquí
-
-
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
@@ -22,5 +19,6 @@ app.use((req, res, next) => {
 });
 
 // Las rutas que se usarán van aquí
+app.use('auth/',require('./controllers/auth'));
 
 module.exports = app;
