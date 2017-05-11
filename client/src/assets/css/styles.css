@@ -1,0 +1,17 @@
+body {
+    background: #555;
+    color: #FFF;
+}
+
+.file-input {
+    visibility: hidden !important;
+    display: none !important;
+}
+
+.modal-content{
+    color: #000;
+}
+
+#uploadButton {
+    width: 80%;
+}
