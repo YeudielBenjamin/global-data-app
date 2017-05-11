@@ -7,7 +7,7 @@
     <ul class="nav navbar-nav">
       <li><a href="#" data-toggle="modal" data-target="#uploadModal">Archivos</a></li>
       <li>
-        <a href=""> Colaboradores </a>
+        <a data-toggle="modal" data-target="#modalUsers"> Colaboradores </a>
       </li>
       <li>
         <a href=""> Gráficas </a>
@@ -161,6 +161,27 @@
       </div>
       <div class="modal-body">
         <register></register>
+      </div>
+      <div class="modal-footer">
+        <a href="">Contáctanos! </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- User's list  data modal -->
+<div class="modal fade " id="modalUsers" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title" id="myModalLabel">Usuarios colaborando: </h3>
+      </div>
+      <div class="modal-body">
+        <users></users>
       </div>
       <div class="modal-footer">
         <a href="">Contáctanos! </a>
