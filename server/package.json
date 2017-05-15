@@ -1,38 +1,16 @@
 {
-  "name": "global-data-app",
-  "version": "1.0.0",
-  "description": "Programa que ayuda con la visualización de datos y estadísticas por país de acuerdo a su producción de alimentos.",
-  "main": "index.js",
-  "scripts": {
-    "start": "nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "name": "World-Data-API",
+  "version": "2.0.0",
+  "description":"Proyecto del maestro Fausto",
+  "main":"server.js",
+  "scripts":{
+  	"start": "nodemon server.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/YeudielBenjamin/global-data-app.git"
-  },
-  "keywords": [
-    "global-data-app",
-    "alimentos",
-    "proyecto",
-    "proyecto-final",
-    "estadisticas"
-  ],
-  "author": "Equipo 5",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/YeudielBenjamin/global-data-app/issues"
-  },
-  "homepage": "https://github.com/YeudielBenjamin/global-data-app#readme",
   "dependencies": {
-    "bcrypt-nodejs": "0.0.3",
-    "body-parser": "^1.17.1",
-    "connect-multiparty": "^2.0.0",
-    "express": "^4.15.2",
-    "jwt-simple": "^0.5.1",
-    "moment": "^2.18.1",
-    "mongoose": "^4.9.8",
-    "mongoose-pagination": "^1.0.0"
+    "mongoose": "~3.6.11",
+    "express": "^4.7.1",
+    "method-override": "^2.1.2",
+    "body-parser": "^1.5.1"
   },
   "devDependencies": {
     "nodemon": "^1.11.0"
