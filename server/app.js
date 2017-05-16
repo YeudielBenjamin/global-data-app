@@ -3,14 +3,12 @@
 const express = require('express')  
 const bodyParser = require('body-parser')
 const app = express()
+const api = require('./routes')
 
 const UserController = require('./controllers/user')
 
 app.use(bodyParser.urlencoded({ extended : false }))
 app.use(bodyParser.json())
-
-//RUTAS(ENDPOINTS)
-app.post('/auth/register',UserController.register)
-app.post('/auth/login',UserController.login)
+app.use(api)
 
 module.exports = app
