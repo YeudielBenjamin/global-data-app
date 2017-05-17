@@ -9,8 +9,18 @@ function save(req,res){
     errors = 'Errores:'
     hasError = false
 
-    csvData = req.body.data
-    fileName = req.body.fileName
+    var file_path = req.files.data.path;
+    var file_split = file_path.split("\\");
+    var file_name = file_split[file_split.length - 1];
+
+    csvData = req.files.data.path
+    //fileName = req.body.fileName
+    fileName = file_name
+
+
+
+    console.log("Csvdata:" + csvData);
+    console.log("File name:" + fileName);
 
     //verificamos que tengamos la informacion
     //no uso else if para verificar todos los campos

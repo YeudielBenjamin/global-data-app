@@ -20,7 +20,7 @@ export class AppComponent {
               (result:any) => {
                   //this.user.image = result.image;
                   //localStorage.setItem("identity", JSON.stringify(this.user));
-
+                  console.log("Resultados:");
                   console.log(result);
               }
           );
@@ -41,8 +41,6 @@ export class AppComponent {
                 formData.append("data", files[i], files[i].name);
             }
 
-            console.log(formData);
-
             xhr.onreadystatechange = function(){
                 if (xhr.readyState == 4) {
                     if (xhr.status == 200) {
@@ -50,6 +48,7 @@ export class AppComponent {
                     } else {
                         reject(xhr.response);
                     }
+                    //resolve(JSON.parse(xhr.response));                    
                 }
             }
 

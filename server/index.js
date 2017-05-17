@@ -2,7 +2,7 @@
 
 var mongoose = require("mongoose");
 var app      = require("./app");
-
+ 
 var port = process.env.PORT || 3000;
 
 mongoose.connect("mongodb://localhost:27017/global-data-app", (err, res) => {
