@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import * as d3 from 'd3';
 
 
 @Component({
@@ -8,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WorldmapComponent implements OnInit {
 
-  constructor() { }
+  public svg: d3.Selection<any, any, any, any>;
+
+  constructor() {
+    
+    this.svg = d3.select("#worldMapSvg");
+    this.svg = this.svg.append("g").attr("class", "hello");
+   }
 
   ngOnInit() {
+
   }
 
 }

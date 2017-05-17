@@ -43,14 +43,14 @@
             <span class="input-group-btn" title="Selecciona un archivo de tu computadora.">
                 <label class="btn btn-primary">
                     <i class="glyphicon glyphicon-folder-open "></i>&nbsp;
-                    Seleccionar... <input id="fileUploadInput" type="file" class="file-input" accept=".json,.csv">
+                    Seleccionar... <input id="fileUploadInput" type="file" (change)="fileChangeEvent($event)" class="file-input" accept=".json,.csv">
                 </label>
             </span>
             <!-- <span class="input-group-btn">
             </span>-->
         </div>
         <br>
-        <button class="btn btn-default" id="uploadButton">
+        <button class="btn btn-default" id="uploadButton" (click)="uploadFile()">
           <i class="glyphicon glyphicon-open"></i>&nbsp;
           Subir      
         </button>
