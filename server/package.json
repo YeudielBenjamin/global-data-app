@@ -1,17 +1,17 @@
-
 {
   "name": "World-Data-API",
   "version": "2.0.0",
-  "description":"Proyecto del maestro Fausto",
-  "main":"server.js",
-  "scripts":{
-  	"start": "nodemon server.js"
+  "description": "Proyecto del maestro Fausto",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
   },
   "dependencies": {
-    "mongoose": "~3.6.11",
+    "body-parser": "^1.5.1",
+    "csvtojson": "^1.1.5",
     "express": "^4.7.1",
     "method-override": "^2.1.2",
-    "body-parser": "^1.5.1"
+    "mongoose": "~3.6.11"
   },
   "devDependencies": {
     "nodemon": "^1.11.0"
