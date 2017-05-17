@@ -1,6 +1,10 @@
 #tel{
 	 margin-right:16px;	
 }
+.img-circle{
+	max-width: 20%;
+	max-height: 20%;
+}
 /*
 .well{
 	background-color: gray;
