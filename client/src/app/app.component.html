@@ -21,26 +21,7 @@
 </nav>
 
 <!-- Main section start -->
-<div>
-  <h1 class=" text-center">DATAWAREHOUSE </h1>
-  <div class="col-sm-12">
-    <div class="col-sm-6"> 
-      <img class="img-responsive" height="900" width="900" src="./assets/img/mundo3.gif" alt="miau miau">
-    </div>
-    <div class="col-sm-6">
-      <h3>{{title}}</h3>
-      <p>PROYECTO PARA ANALISIS DE DATOS</p>
-      <p>EQUIPO 5</p>
-      <p>CUCEI UDG</p>
-
-      <h4>ESTADISTICAS POR PAÍS </h4>
-      <p>Analisis de datos referentes a suelo, agricultura y medio ambiente.</p>     
-
-      <h4>PAÍSES</h4>
-      <p> El analisis de la información se centrará en algunos países de entre los 5 continentes.</p>
-    </div>
-  </div>
-</div>
+<app-worldmap></app-worldmap>
 <!-- Main section end -->
 
 
@@ -62,14 +43,14 @@
             <span class="input-group-btn" title="Selecciona un archivo de tu computadora.">
                 <label class="btn btn-primary">
                     <i class="glyphicon glyphicon-folder-open "></i>&nbsp;
-                    Seleccionar... <input id="fileUploadInput" type="file" class="file-input" accept=".json,.csv">
+                    Seleccionar... <input id="fileUploadInput" type="file" (change)="fileChangeEvent($event)" class="file-input" accept=".json,.csv">
                 </label>
             </span>
             <!-- <span class="input-group-btn">
             </span>-->
         </div>
         <br>
-        <button class="btn btn-default" id="uploadButton">
+        <button class="btn btn-default" id="uploadButton" (click)="uploadFile()">
           <i class="glyphicon glyphicon-open"></i>&nbsp;
           Subir      
         </button>

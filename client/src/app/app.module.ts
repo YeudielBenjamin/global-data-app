@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { UsersComponent } from './users/users.component';
 import { RegisterComponent } from './register/register.component';
 import { SigninComponent } from './signin/signin.component';
+import { WorldmapComponent } from './worldmap/worldmap.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UsersComponent,
     RegisterComponent,
-    SigninComponent
+    SigninComponent,
+    WorldmapComponent
   ],
   imports: [
     BrowserModule,
