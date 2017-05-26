@@ -1,8 +1,8 @@
 
-<nav class="navbar navbar-inverse">
+<nav id="navigation-bar" class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">{{title}}</a>
+      <a class="navbar-brand notranslate" href="#">{{title}}</a>
     </div>
     <ul class="nav navbar-nav">
       <li><a href="#" data-toggle="modal" data-target="#uploadModal">Archivos</a></li>
@@ -11,6 +11,9 @@
       </li>
       <li>
         <a href=""> Gráficas </a>
+      </li>
+      <li>
+        <a href="#" data-toggle="modal" data-target="#optionsModal">Opciones</a>
       </li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
@@ -23,7 +26,6 @@
 <!-- Main section start -->
 <app-worldmap></app-worldmap>
 <!-- Main section end -->
-
 
 
 <!-- File upload modal start -->
@@ -46,8 +48,6 @@
                     Seleccionar... <input id="fileUploadInput" type="file" (change)="fileChangeEvent($event)" class="file-input" accept=".json,.csv">
                 </label>
             </span>
-            <!-- <span class="input-group-btn">
-            </span>-->
         </div>
         <br>
         <button class="btn btn-default" id="uploadButton" (click)="uploadFile()">
@@ -57,7 +57,7 @@
         <!-- Browse file end -->
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" id="openCleanDataModal">Siguiente</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
       </div>
     </div>
 
@@ -68,7 +68,7 @@
 
 <!-- Clean data modal start -->
 <div id="cleanDataModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-lg">
 
     <!-- Modal content-->
     <div class="modal-content">
@@ -77,7 +77,7 @@
         <h4 class="modal-title">Clean data</h4>
       </div>
       <div class="modal-body container-fluid">
-        <div class="col-sm-6">
+        <div class="col-sm-3">
           <div class="checkbox">
             <label><input type="checkbox" value="">File 1</label>
           </div>
@@ -98,8 +98,8 @@
             </span>
           </div>
         </div>
-        <div class="col-sm-6">
-          
+        <div class="col-sm-9">
+          <div id="showData" class="table-responsive"></div>
         </div>
       </div>
       <div class="modal-footer">
@@ -171,5 +171,33 @@
   </div>
 </div>
 
+<!-- Options modal start -->
+<div id="optionsModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
 
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Opciones</h4>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="theme">Tema:</label>
+          <select class="form-control" id="theme">
+            <option value="dark">Oscuro</option>
+            <option value="light">Claro</option>
+          </select>
 
+          <label>Lenguaje</label>
+          <div id="google_translate_element"></div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- Options modal end -->

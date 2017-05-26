@@ -43,6 +43,7 @@ function save(req,res){
     Csv()
     .fromFile(csvData)
     .on('data', (data) => {
+        console.log(data.toString())
         jsonData = JSON.parse(data.toString())
         rows.push(jsonData)
     })
@@ -50,15 +51,17 @@ function save(req,res){
         if(error){
             res.status(500).send('Failed to parse data to json.')
         }else{ 
+
             var file = new File()
             file.name = fileName
             file.data = rows
-
-
             file.save((err, file)=>{
                 if(err){
-                    res.status(500).send('Failed to save data.')
+                    res.status(500).send('Error in database.')
+                }else if(!file){
+                    res.status(400).send('Failed to save data.')
                 }else{ 
+                    console.log('hasdf')
                     res.status(200).send(file)
                 }
            })

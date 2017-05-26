@@ -3,7 +3,7 @@
 const User = require('../models/user')
 
 function register(req,res){
-	var errors,hasError,name,email,password
+	var errors,hasError,name,email,password,phone
 
     errors = 'Errores:'
     hasError = false
@@ -11,6 +11,18 @@ function register(req,res){
     name = req.body.name
     email = req.body.email
     password = req.body.password
+    phone = req.body.phone
+
+    User.findOne({
+        'email':email
+    },(err,user)=>{
+        if(err){
+            res.status(500).send('Error in database')
+        }
+        else if(user){
+            res.status(400).send('The email is registered in the database')
+        }
+    })
 
     //verificamos que tengamos la informacion del usuario
     //no uso else if para verificar todos los campos
@@ -26,6 +38,9 @@ function register(req,res){
         hasError = true
         errors += ' password is required,'
     }
+    if(!phone){
+        phone = 'without phone'//no obligatorio
+    }
 
     //en caso de faltar informacion, regresa errors
     if(hasError){
@@ -37,6 +52,8 @@ function register(req,res){
     user.name = name
     user.email = email
     user.password = password
+    user.phone = phone
+    user.provider = 'local'
 
     user.save((err, user)=>{
         if(err){
@@ -71,13 +88,14 @@ function login(req,res){
 
     User.findOne({
         email:email,
-        password:password
+        password:password,
+        provider:'local'//si inicia sesion con facebook o google, no se guarda contraseña
     },(err,user)=>{
         if(err){
-            res.status(500).send('Error al realizar la peticion')
+            res.status(500).send('Error in database')
         }
         else if(!user){
-            res.status(401).send('No se pudo encontrar el usuario');
+            res.status(400).send('Cant save user');
         }else{
             res.status(200).send(user);
         }
@@ -85,7 +103,17 @@ function login(req,res){
 
 }
 
+function facebookLogin(req,res){
+    res.status(200).send(req.user)
+}
+
+function googleLogin(req,res){
+    res.status(200).send(req.user)
+}
+
 module.exports = {
 	register,
-	login
+	login,
+    facebookLogin,
+    googleLogin
 }

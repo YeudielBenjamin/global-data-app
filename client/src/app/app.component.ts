@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { GLOBAL } from "./config/global";
+import * as d3 from "d3";
 
 @Component({
   selector: 'app-root',
@@ -18,10 +19,41 @@ export class AppComponent {
       } else {
           this.makeFileRequest(GLOBAL.url + "api/data", [], this.filesToUpload).then(
               (result:any) => {
-                  //this.user.image = result.image;
-                  //localStorage.setItem("identity", JSON.stringify(this.user));
+                  var uploadModal: any = $("#uploadModal");
+                  var cleanDataModal: any = $("#cleanDataModal");
                   console.log("Resultados:");
                   console.log(result);
+                  uploadModal.modal("hide");
+                  cleanDataModal.modal("show");
+
+                  let table = d3.select("#showData").append("table").attr("class", "table table-hover");
+                  let thead = table.append("thead");
+                  let tbody = table.append("tbody");
+
+                  var firstRow = result.data[0];
+
+                  for (let a in firstRow) {
+                        if (firstRow.hasOwnProperty(a)) {
+                            thead.append("th").text(a);
+                        }
+                    }
+
+                  var rows = tbody.selectAll("tr")
+                                .data(result.data)
+                                .enter().append("tr")
+                                    .html(function(d:any, index){
+                                        var size = 0, key;
+                                        var str = "";
+                                        for (key in d) {
+                                            if (d.hasOwnProperty(key)) {
+
+                                                size++;
+                                                str = str + "<td>" + d[key] + "</td>";
+                                            }
+                                        }
+                                        return str;
+                                    });
+
               }
           );
       }
@@ -53,6 +85,7 @@ export class AppComponent {
             }
 
             xhr.open("POST", url, true);
+            xhr.setRequestHeader("Access-Control-Allow-Origin", "http://localhost:3000");
             xhr.send(formData);
         });
     }
