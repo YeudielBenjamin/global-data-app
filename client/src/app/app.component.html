@@ -77,7 +77,8 @@
         <h4 class="modal-title">Clean data</h4>
       </div>
       <div class="modal-body container-fluid">
-        <div class="col-sm-3">
+        
+        <!--<div class="col-sm-3">
           <div class="checkbox">
             <label><input type="checkbox" value="">File 1</label>
           </div>
@@ -85,7 +86,7 @@
             <label><input type="checkbox" value="">File 2</label>
           </div>
           <br>
-          <!-- Dataset selection start-->
+          
           <label for="cleanAlgorithm">Aplicar algoritmo de limpieza:</label>
           <div class="input-group">
             <select class="form-control" id="cleanAlgorithm">
@@ -97,8 +98,9 @@
               </button>
             </span>
           </div>
-        </div>
-        <div class="col-sm-9">
+        </div>-->
+
+        <div class="col-sm-12">
           <div id="showData" class="table-responsive"></div>
         </div>
       </div>
@@ -171,33 +173,3 @@
   </div>
 </div>
 
-<!-- Options modal start -->
-<div id="optionsModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Opciones</h4>
-      </div>
-      <div class="modal-body">
-        <div class="form-group">
-          <label for="theme">Tema:</label>
-          <select class="form-control" id="theme">
-            <option value="dark">Oscuro</option>
-            <option value="light">Claro</option>
-          </select>
-
-          <label>Lenguaje</label>
-          <div id="google_translate_element"></div>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-      </div>
-    </div>
-
-  </div>
-</div>
-<!-- Options modal end -->

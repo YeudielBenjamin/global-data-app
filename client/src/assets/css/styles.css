@@ -10,6 +10,7 @@
 
 .modal-content{
     color: #000;
+    border-radius: 4px;
 }
 
 #uploadButton {
@@ -33,6 +34,30 @@
     width: 100%;
     margin: 0 auto;
     height: 350px;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 8px 0 rgba(0, 0, 0, 0.19);
+}
+
+.modal-header {
+    padding: 15px 0;
+    width: 90%;
+    margin-left: 5%;
+    border-bottom: 2px groove #e5e5e5;
+}
+
+.modal-header .close {
+    margin-right: -3%;
+}
+
+.modal-title {
+    margin-left: -3%;
+}
+
+.modal-body {
+    margin-top: 1em;
+}
+
+.modal-footer {
+    border-top: none;
 }
 
 body {

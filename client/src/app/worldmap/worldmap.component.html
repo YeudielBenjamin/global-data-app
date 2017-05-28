@@ -26,8 +26,52 @@
 </div>-->
 <div class="col-sm-12">
   <div id="chart"></div>
-  <div id="timeline">
-    <div class="play-parent"><div class="play" data-msg="intro.animation.play"></div></div>
-  </div>
-  <div id="tooltip"></div>
+  <app-timeline></app-timeline>
+  <div class="notranslate" id="tooltip"></div>
 </div>
+
+<!-- Options modal start -->
+<div id="optionsModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Opciones</h4>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="visualizationMode">Modo de visualización</label>
+          <select class="form-control" id="visualizationMode" (change)="changeProjection($event.target.value)">
+            <option value="none">Choose...</option>
+            <option value="mercator">Spherical mercator projection</option>
+            <option value="azimuthal">Azimuthal projection</option>
+            <option value="azimuthalEquidistant">Azimuthal equidistant projection</option>
+            <option value="gnomonic">Gnomonic projection</option>
+            <option value="orthographic">Orthographic projection</option>
+            <option value="stereographic">Stereographic projection</option>
+            <option value="conicConformal">Conic conformal projection</option>
+            <option value="equalAreaConic">Equal-area conic projection</option>
+            <option value="conicEquidistant">Conic equidistant projection</option>
+            <option value="equirectangular">Equirectangular projection</option>
+            <option value="transverseSphericalMercator">Transverse spherical Mercator projection</option>
+          </select>
+          <label for="theme">Tema:</label>
+          <select class="form-control" id="theme">
+            <option value="dark">Oscuro</option>
+            <option value="light">Claro</option>
+          </select>
+
+          <label>Lenguaje</label>
+          <div id="google_translate_element"></div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- Options modal end -->
