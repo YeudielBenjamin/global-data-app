@@ -8,6 +8,7 @@ import { UsersComponent } from './users/users.component';
 import { RegisterComponent } from './register/register.component';
 import { SigninComponent } from './signin/signin.component';
 import { WorldmapComponent } from './worldmap/worldmap.component';
+import { TimelineComponent } from './timeline/timeline.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { WorldmapComponent } from './worldmap/worldmap.component';
     UsersComponent,
     RegisterComponent,
     SigninComponent,
-    WorldmapComponent
+    WorldmapComponent,
+    TimelineComponent
   ],
   imports: [
     BrowserModule,
