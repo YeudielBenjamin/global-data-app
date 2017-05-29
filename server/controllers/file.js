@@ -114,8 +114,6 @@ function dataMining(req,res){
     error = 'Errores:'
     hasError = false
 
-    console.log("Body: " + req.body);
-
     if(!req.body.file_id){
         hasError = true
         error += ' id is required,'
@@ -132,6 +130,7 @@ function dataMining(req,res){
             res.status(401).send('Could not find file');
         }else{
             var years, productions, fruits, percentagesIncreaseTotal, percentagesIncreaseYears, i, j, firstAndLastYears
+            var maxYear,maxValue,minYear,minValue
             //primero debemos saber las distintas frutas que hay
             fruits = []
             file.data.forEach((row) => {//iteramos data, contiene la info del archivo y sacamos las frutas que existan
@@ -151,6 +150,8 @@ function dataMining(req,res){
             years[i] = []
             productions[i] = []
             var productionsPerYears = []
+            maxValue = minValue = parseInt(file.data[0].Value)
+            maxYear = minYear = parseInt(file.data[0].Year)
 
             file.data.forEach((row) => {//iteramos data, contiene la info del archivo y sacamos los años y la produccion por fruta
                 if(row.Item == fruits[i]){
@@ -161,6 +162,18 @@ function dataMining(req,res){
                     productions[i] = [row.Value]
                 }
                 productionsPerYears.push({year:row.Year,production:row.Value})
+                if(maxYear < parseInt(row.Year)){
+                    maxYear = parseInt(row.Year)
+                }
+                if(minYear > parseInt(row.Year)){
+                    minYear = parseInt(row.Year)
+                }
+                if(maxValue < parseInt(row.Value)){
+                    maxValue = parseInt(row.Value)
+                }
+                if(minValue > parseInt(row.Value)){
+                    minValue = parseInt(row.Value)
+                }
             })
 
             //verificamos que haya la misma cantidad de años y valores de produccion por fruta
@@ -183,16 +196,24 @@ function dataMining(req,res){
             }
 
             
-            var aux
+            var valueAux
             firstAndLastYears = []
             for (i = 0; i < fruits.length; i++) {
                 firstAndLastYears.push({firstYear:years[i][0],
                                         lastYear:years[i][years[i].length-1]})
-                for (aux = parseFloat(productions[i][productions[i].length-1]), j = 0; j < req.body.years; j++) {
-                    aux *= 1 + (parseFloat(percentagesIncreaseTotal[i])/100)
-                    productionsPerYears.push({year:(parseFloat(years[i][years[i].length-1])+1+j),production:parseInt(aux)})
+                for (valueAux = parseFloat(productions[i][productions[i].length-1]), j = 0; j < req.body.years; j++) {
+                    valueAux *= 1 + (parseFloat(percentagesIncreaseTotal[i])/100)
+                    productionsPerYears.push({year:(parseFloat(years[i][years[i].length-1])+1+j),production:parseInt(valueAux)})
+                    if(maxValue < parseInt(valueAux)){
+                        maxValue = parseInt(valueAux)
+                    }
+                    if(minValue > parseInt(valueAux)){
+                        minValue = parseInt(valueAux)
+                    }
                 }
             }
+
+            maxYear += parseInt(req.body.years)
 
             res.status(200).send({
                 fruits: fruits,
@@ -201,7 +222,11 @@ function dataMining(req,res){
                 years: req.body.years,
                 firstAndLastYears:firstAndLastYears,
                 country: iso2ToIso3[iso2Countries[file.data[0].Area]],
-                unit: file.data[0].Unit
+                unit: file.data[0].Unit,
+                maxYear:maxYear,
+                minYear:minYear,
+                maxValue:maxValue,
+                minValue:minValue
             })
         }
     });
