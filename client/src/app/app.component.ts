@@ -1,17 +1,23 @@
 import { Component } from '@angular/core';
 import { GLOBAL } from "./config/global";
+import { FileService } from "./services/file.service";
 import * as d3 from "d3";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  providers: [FileService]
 })
 
 export class AppComponent {
+  public url;
+  public file_id;
   title = 'GLOBAL DATA APP';
 
   public filesToUpload: Array<File>;
+
+  constructor(private _fileService: FileService) {}
 
   public uploadFile(){
      if (!this.filesToUpload) {
@@ -19,6 +25,9 @@ export class AppComponent {
       } else {
           this.makeFileRequest(GLOBAL.url + "api/data", [], this.filesToUpload).then(
               (result:any) => {
+                  console.log(result);
+                  this.file_id = result._id;
+                  console.log(this.file_id);
                   var uploadModal: any = $("#uploadModal");
                   var cleanDataModal: any = $("#cleanDataModal");
                   uploadModal.modal("hide");
@@ -58,8 +67,21 @@ export class AppComponent {
   }
 
   public fileChangeEvent(fileInput: any){
-        this.filesToUpload = <Array<File>>fileInput.target.files;
-    }
+    this.filesToUpload = <Array<File>>fileInput.target.files;
+  }
+
+  public startMining() {
+    this._fileService.dataMining({file_id: this.file_id}).subscribe(
+        respose => {
+            console.log(respose);
+            
+        },
+        error =>{
+            console.log("Hubo un error");
+            console.log(error);
+        }
+    );
+  }
 
     public makeFileRequest(url: string, params: Array<string>, files: Array<File>){
 

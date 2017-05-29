@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { routing, appRoutingProvider } from "./app.routing";
 
 import { AppComponent } from './app.component';
 import { UsersComponent } from './users/users.component';
@@ -24,7 +25,7 @@ import { TimelineComponent } from './timeline/timeline.component';
     FormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [appRoutingProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
