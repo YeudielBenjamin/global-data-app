@@ -2,12 +2,12 @@
 <nav id="navigation-bar" class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand notranslate" href="#">{{title}}</a>
+      <a class="navbar-brand notranslate " routerLink="/app-worldmap" routerLinkActive="active">{{title}}</a>
     </div>
     <ul class="nav navbar-nav">
       <li><a href="#" data-toggle="modal" data-target="#uploadModal">Archivos</a></li>
       <li>
-        <a data-toggle="modal" data-target="#modalUsers"> Colaboradores </a>
+        <a routerLink="/users" > Colaboradores </a>
       </li>
       <li>
         <a href=""> Gráficas </a>
@@ -17,15 +17,25 @@
       </li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
-      <li><a data-toggle="modal" data-target="#modalSignIn"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-      <li><a href="#" data-toggle="modal" data-target="#modalSignUp" ><span class="glyphicon glyphicon-log-in" ></span> Login</a></li>
+      <li><a data-toggle="modal" data-target="#modalSignUp"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+
+      <li><a href="#" data-toggle="modal" data-target="#modalSignIn" ><span class="glyphicon glyphicon-log-in" ></span> Login</a></li>
+   
+
     </ul>
   </div>
 </nav>
 
 <!-- Main section start -->
-<app-worldmap></app-worldmap>
-<!-- Main section end -->
+
+<!--  <router-outlet></router-outlet>
+ -->
+ 
+
+ <router-outlet></router-outlet>
+<!--  <app-worldmap></app-worldmap>
+ -->
+ <!-- Main section end -->
 
 
 <!-- File upload modal start -->

@@ -2,6 +2,38 @@
 
 const User = require('../models/user')
 
+
+ function getUsers (req, res){
+    var users;
+
+    users = User.find();
+    console.log(users);
+
+ }
+
+ //GET - Return all registers
+function  findAll  (req, res) {
+    console.log('FIND ALL');
+ User.find(function(err, users) {
+ if(err) res.send(500, err.message);
+ console.log('GET /users')
+ res.status(200).jsonp(users);
+ });
+};
+
+
+
+function getUser(req,res){
+    var userId = req.body.id;
+
+    res.status(200).send({message: 'Accion get user'});
+
+
+
+}
+
+
+
 function register(req,res){
 	var errors,hasError,name,email,password,phone
 
@@ -115,5 +147,8 @@ module.exports = {
 	register,
 	login,
     facebookLogin,
-    googleLogin
+    googleLogin,
+    getUsers,
+    getUser,
+    findAll
 }

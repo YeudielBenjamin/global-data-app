@@ -9,6 +9,13 @@ import { RegisterComponent } from './register/register.component';
 import { SigninComponent } from './signin/signin.component';
 import { WorldmapComponent } from './worldmap/worldmap.component';
 
+import {RouterModule} from '@angular/router';
+import * as $ from 'jquery';
+
+//import {MaterialModule} from '@angular/material';
+
+//import 'hammerjs';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,13 +23,40 @@ import { WorldmapComponent } from './worldmap/worldmap.component';
     RegisterComponent,
     SigninComponent,
     WorldmapComponent
+
+
+
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    //MaterialModule,
+
+    RouterModule.forRoot([
+      {
+        path: 'users',
+        component: UsersComponent
+      },
+      {
+        path:'app-worldmap',
+        component: WorldmapComponent
+      },
+      {
+        path: '',
+        redirectTo: '/app-worldmap',
+        pathMatch: 'full'
+
+      }
+    ])
+
   ],
-  providers: [],
+  exports:[
+    UsersComponent
+  ],
+  providers: [
+    UsersComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

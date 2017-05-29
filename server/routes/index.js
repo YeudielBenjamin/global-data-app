@@ -23,4 +23,7 @@ api.get('/auth/google/callback',passport.authenticate('google'),UserController.g
 api.post('/api/data', md_upload, FileController.save)
 api.get('/api/data/:id',FileController.consult) 
 
+api.get('/api/users',UserController.findAll)
+
+
 module.exports = api

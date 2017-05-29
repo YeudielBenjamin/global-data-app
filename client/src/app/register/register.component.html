@@ -1,36 +1,45 @@
+
 <div class="col-sm-12 well">
-	<div class="">
+	<div class="titleSingUp">
 		<h4>Tu Perfil de Usuario</h4>
 	</div>
 	<br/><br/>
-	<form class="form-horizontal">
+	<form #loginForm="ngForm"  class="form-horizontal" >
 		<img src="./assets/img/users.png" class="img-responsive img-circle">
 		<div class="form-group">
 			<div class="input-group input-group-sm">
 			  <span class="input-group-addon" id="sizing-addon3">Nombre(s)</span>
-			  <input type="text" class="form-control" placeholder="..." aria-describedby="sizing-addon3">
+			  <input type="text" name="name" #name="ngModel" [(ngModel)]="user.name" class="form-control" placeholder="Pedro Picapiedra" aria-describedby="sizing-addon4" required />
+			  
+
 			</div>
 		</div>
 
 		<div class="form-group">
 			<div class="input-group input-group-sm">
 			  <span class="input-group-addon" id="sizing-addon3">Apellidos</span>
-			  <input type="text" class="form-control" placeholder="..." aria-describedby="sizing-addon3">
+			  <input name="lastname" #lastname="ngModel" [(ngModel)]="user.lastname" type="text" class="form-control" placeholder="Gomez Perez" aria-describedby="sizing-addon3" required>
 			</div>
 		</div>
 
 		<div class="form-group">
 		<div class="input-group input-group-sm">
 			  <span class="input-group-addon" id="sizing-addon3">Teléfono</span>
-			  <input type="text" class="form-control" placeholder="0000" aria-describedby="sizing-addon3">
+			  <input name="phone" #phone="ngModel" [(ngModel)]="user.phone" type="text" class="form-control" placeholder="01-800-4652" aria-describedby="sizing-addon3" required>
 			</div>
 		</div>
 
 
 		<div class="form-group">
 		<div class="input-group input-group-sm">
-			  <span class="input-group-addon" id="sizing-addon3">Correo E.</span>
-			  <input type="text" class="form-control" placeholder="..." aria-describedby="sizing-addon3">
+			  <span class="input-group-addon" id="sizing-addon3">Correo</span>
+			  <input name="email" #email="ngModel" [(ngModel)]="user.email" type="email" class="form-control"  required placeholder="queremospasar@profebonito.com" aria-describedby="sizing-addon3" required>
+		</div>
+		</div>
+		<div class="form-group">
+		<div class="input-group input-group-sm">
+			  <span class="input-group-addon" id="sizing-addon3">Contraseña</span>
+			  <input name="password" #password="ngModel" [(ngModel)]="user.password" type="password" class="form-control"  required placeholder="*****" aria-describedby="sizing-addon3" required>
 		</div>
 		</div>
 
@@ -40,10 +49,10 @@
 			</label>
 
 			<div class="col-sm-12">
-				<button type="submit" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-floppy-saved"></span> Guardar
+				<button type="submit" class="btn btn-primary "><span class="glyphicon glyphicon-floppy-saved"></span> Guardar
 				</button>
 
-				<button type="button" class="btn  btn-lg"><span class="glyphicon glyphicon-remove-circle"></span> Cancelar
+				<button type="button" class="btn btn-default"><span class="glyphicon glyphicon-remove-circle"></span> Cancelar
 				</button>
 			</div>
 

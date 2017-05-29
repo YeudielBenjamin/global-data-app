@@ -9,6 +9,10 @@ import * as d3 from "d3";
 })
 
 export class AppComponent {
+
+ 
+
+  
   title = 'GLOBAL DATA APP';
 
   public filesToUpload: Array<File>;
