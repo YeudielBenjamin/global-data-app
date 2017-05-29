@@ -2,8 +2,11 @@
 
 const User = require('../models/user')
 
+var MANAGER = 'manager'
+var ADMIN = 'admin'
+ 
 function register(req,res){
-	var errors,hasError,name,email,password,phone
+	var errors,hasError,name,email,password,phone,type
 
     errors = 'Errores:'
     hasError = false
@@ -12,6 +15,7 @@ function register(req,res){
     email = req.body.email
     password = req.body.password
     phone = req.body.phone
+    type = req.body.type
 
     User.findOne({
         'email':email
@@ -41,6 +45,11 @@ function register(req,res){
     if(!phone){
         phone = 'without phone'//no obligatorio
     }
+    if(!type){
+        type = MANAGER
+    }else{
+        type = ADMIN
+    }
 
     //en caso de faltar informacion, regresa errors
     if(hasError){
@@ -54,6 +63,7 @@ function register(req,res){
     user.password = password
     user.phone = phone
     user.provider = 'local'
+    user.type = type
 
     user.save((err, user)=>{
         if(err){

@@ -21,6 +21,7 @@ api.get('/auth/google',passport.authenticate('google', { scope : ['email'] }))
 api.get('/auth/google/callback',passport.authenticate('google'),UserController.googleLogin)
 //DATA
 api.post('/api/data', md_upload, FileController.save)
-api.get('/api/data/:id',FileController.consult) 
+api.get('/api/data/:id',FileController.consult)
+api.post('/api/data/datamining',FileController.dataMining) 
 
 module.exports = api

@@ -8,7 +8,8 @@ const UserSchema = Schema({
     email: String,
     password: String,
     phone: String,
-    provider: String
+    provider: String,
+    type:String
 })
 
 module.exports = mongoose.model('User',UserSchema)

@@ -31,6 +31,7 @@ passport.use(new FacebookStrategy(config.facebookAuth,
                 user.email = data.email
                 user.phone = 'no phone from social login'
                 user.provider = 'facebook'
+                user.type = 'manager'
 
                 user.save(function(err) {
                     return done(err, user);
@@ -56,6 +57,7 @@ passport.use(new GoogleStrategy(config.googleAuth,
                 user.email = profile.emails[0].value
                 user.phone = 'no phone from social login'
                 user.provider = 'google'
+                user.type = 'manager'
 
                 user.save(function(err) {
                     return done(err, user);
