@@ -21,8 +21,6 @@ export class AppComponent {
               (result:any) => {
                   var uploadModal: any = $("#uploadModal");
                   var cleanDataModal: any = $("#cleanDataModal");
-                  console.log("Resultados:");
-                  console.log(result);
                   uploadModal.modal("hide");
                   cleanDataModal.modal("show");
 
