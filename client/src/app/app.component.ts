@@ -1,13 +1,15 @@
 import { Component } from '@angular/core';
 import { GLOBAL } from "./config/global";
 import { FileService } from "./services/file.service";
+import { TimelineComponent } from "./timeline/timeline.component";
+import { WorldmapComponent } from "./worldmap/worldmap.component";
 import * as d3 from "d3";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [FileService]
+  providers: [FileService, TimelineComponent, WorldmapComponent]
 })
 
 export class AppComponent {
@@ -17,7 +19,11 @@ export class AppComponent {
 
   public filesToUpload: Array<File>;
 
-  constructor(private _fileService: FileService) {}
+  constructor(
+      private _fileService: FileService, 
+      private _timeline: TimelineComponent,
+      private _worldmap: WorldmapComponent
+  ) {}
 
   public uploadFile(){
      if (!this.filesToUpload) {
@@ -72,9 +78,12 @@ export class AppComponent {
 
   public startMining() {
     this._fileService.dataMining({file_id: this.file_id}).subscribe(
-        respose => {
-            console.log(respose);
-            
+        response => {
+            let res = response;
+            this._timeline.updateTimeline(response);
+            this._worldmap.addCountryData(res);
+            let modal:any = $("#cleanDataModal");
+            modal.modal("hide");
         },
         error =>{
             console.log("Hubo un error");

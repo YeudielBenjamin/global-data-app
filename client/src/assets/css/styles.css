@@ -52,6 +52,14 @@
     margin-left: -3%;
 }
 
+g > text {
+    fill: #EEE;
+}
+
+g > line {
+    stroke: #FFF;
+}
+
 .modal-body {
     margin-top: 1em;
     width: 90%;
