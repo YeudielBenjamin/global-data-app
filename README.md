@@ -5,3 +5,5 @@ Programa que ayuda con la visualización de datos y estadísticas por país de a
 Para instalarlo es necesario tener MongoDB corriendo en segundo plano.
 Después de clonar el proyecto ejecutar `npm install` sobre las carpetas **server** y **client**.
 Ejecutar `npm start` sobre estas mismas carpetas para empezar los servidores y poder abrir la aplicación en el puerto 4200
+
+Tener instalado este plugin: https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi?utm_source=chrome-app-launcher-info-dialog
